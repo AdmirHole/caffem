@@ -71,15 +71,16 @@ $sql = "";
 $condition = "";
 foreach ($where as $key => $value) {
 // id = '5' AND username = 'something'
-$condition .= $key . "='" . $value . "' AND ";
+$condition .= $key . "='" . $value . "' AND";
 }
-$condition = substr($condition, 0, -5);
+$condition = substr($condition, 0, -4);
 foreach ($fields as $key => $value) {
 //UPDATE table SET username = '' , password = '' WHERE id = '';
-$sql .= $key . "='".$value."', ";
+$sql .="`$key`='".$value."', ";
 }
 $sql = substr($sql, 0,-2);
-$sql = "UPDATE ".$table." SET ".$sql." WHERE ".$condition;
+$sql = "UPDATE `". $table ."` SET ". $sql ." WHERE ". $condition;
+
 $query = $this->conn->prepare($sql);
 if($query->execute()){
 return true;
@@ -176,3 +177,29 @@ if($obj->update_record("item",$where,$myArray)){
 header("location:index.php?msg=Record Updated Successfully");
 }
 }
+
+/*
+public static function update($table, $data, $where){
+    # Connect to the database
+    self::connect();	
+    # Define variable
+    $useValue = "";
+    # Transform $data array to the nice format string for SQL
+    foreach($data as $key => $value){
+        $useValue .= $key . "='" . $value . "', ";
+    }
+    # Delete last comma in the $useValue
+    $useValue = substr($useValue, 0, -2);
+    # Build query
+    $query = "UPDATE " . $table . " SET " . $useValue . " WHERE " . $where; // Debugging: return self::$query;
+    # Try to insert the data
+    if(self::$connection->query($query) === TRUE){
+        # Successfully updated
+        $finalReturn['code'] = "100";
+        return $finalReturn;
+    }else{
+        # Error: We have a SQL error, please try again.
+        $finalReturn['code'] = "103";
+        return $finalReturn;
+    }
+};*/
