@@ -9,8 +9,18 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
+<div class="d-flex" id="wrapper">
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">Caffe Managment</div>
+            <div class="list-group list-group-flush">
+                <a href="index.php" class="list-group-item list-group-item-action bg-light">Home</a>
+                <a href="stanjeSmjene.php" class="list-group-item list-group-item-action bg-light">Stanje smjene</a>
+                <a href="report.php" class="list-group-item list-group-item-action bg-light">Mjesecni izvjestaj</a>
+            </div>
+        </div>
+
+    <div id="page-content-wrapper">
+        <div class="stanjeSmj-content d-flex justify-content-center align-items-center">
             <!--Prikaz artikala-->
             <table class="table table-bordered col-sm-12 table-hover">
                 <thead>
