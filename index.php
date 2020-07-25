@@ -98,11 +98,10 @@ include "header.html";
                     </thead>
                     <tbody>
                         <?php
-                     $myrow = $obj->fetch_record("item");
-                     for($i = 0; $i < count($myrow); $i++) {
-                     foreach ($myrow[$i] as $row) {
-                      
-                ?>
+                            $myrow = $obj->fetch_record("item");
+                            for($i = 0; $i < count($myrow); $i++) {
+                            foreach ($myrow[$i] as $row) {
+                        ?>
                         <tr>
                             <th scope="row"><?php echo $row["id"];?></th>
                             <td><?php echo $row["name"];?></td>
@@ -123,18 +122,17 @@ include "header.html";
                                     </div>
                                 </form>
                             </td>
-                            <td>
-                                <a class="btn btn-primary btn-sm" href="index.php?editart=<?php echo $row["id"]?>"
-                                    role="button">Edit</a>
-                                <a class="btn btn-primary btn-sm" href="actions.php?delart=<?php echo $row["id"]?>"
-                                    role="button">Delete</a>
+                            <td style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; align-content: stretch; ">
+                                <a href="index.php?editart=<?php echo $row["id"]?>"
+                                    role="button"><span style="color: #393232; border: 1px solid black; border-radius: 5px; font-size: 20px; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; padding: 5px"><i class="fas fa-user-edit"></i></span></a>
+                                <a href="actions.php?delart=<?php echo $row["id"]?>"
+                                    role="button"><span style="color: #393232; border: 1px solid black; border-radius: 5px; font-size: 20px; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; width:50%; padding: 5px"><i class="fas fa-trash-alt"></i></span></a>
                             </td>
                         </tr>
 
-                        <?php
-                     }
+                    <?php
+                        }
                     }
-                    
                     ?>
                     </tbody>
                 </table>
